@@ -1,0 +1,41 @@
+Player input
+---------------------------------------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerInput : MonoBehaviour
+{
+    Vector3 mousePosition;
+
+    private Vector3 GetMousePos()
+    {
+        return Camera.main.WorldToScreenPoint(transform.position);
+    }
+
+    private void OnMouseDown()
+    {
+        mousePosition = Input.mousePosition - GetMousePos();
+    }
+
+    private void OnMouseDrag()
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+    }
+}
+----------------------------------------------------
+Main menu
+----------------------------------------------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour
+{
+    public void TestLevel()
+    {
+        SceneManager.LoadScene("LevelTest");
+    }
+}
+----------------------------------------------------
